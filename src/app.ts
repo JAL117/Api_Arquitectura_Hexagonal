@@ -1,13 +1,19 @@
 import express from 'express';
 import { Signale } from 'signale';
+import helmet from 'helmet'
 
 import { initializeDatabase } from './database/sequelize'; 
 import { userRouter } from './user/infraestructure/userRouter';
 import { medicationRouter} from './medication/infraestructure/medicationRouter'
 
-const app = express();
-const signale = new Signale();
+const options ={
+  secrets: ["([0-9]{4}-?)+"]
+}
 
+const app = express();
+const signale = new Signale(options);
+
+app.use(helmet());
 app.use(express.json());
 app.use('/user',userRouter);
 app.use('/medication',medicationRouter);
