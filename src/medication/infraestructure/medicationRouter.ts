@@ -3,22 +3,7 @@ import { addMedicationController, getAllMedicationController } from "./dependenc
 
 export const medicationRouter = express.Router();
 
-medicationRouter.post("/", (req, res) => {
-  try {
-    addMedicationController.run.bind(addMedicationController)(req, res);
-    return res.sendStatus(200);
-  } catch (error) {
-    console.error(error);
-    return res.sendStatus(500);
-  }
-});
+medicationRouter.post("/", addMedicationController.run.bind(addMedicationController));
 
-medicationRouter.get("/", (req, res) => {
-  try {
-    getAllMedicationController.run.bind(getAllMedicationController)(req, res);
-    return res.sendStatus(200);
-  } catch (error) {
-    console.error(error);
-    return res.sendStatus(500);
-  }
-});
+
+medicationRouter.get("/", getAllMedicationController.run.bind(getAllMedicationController));

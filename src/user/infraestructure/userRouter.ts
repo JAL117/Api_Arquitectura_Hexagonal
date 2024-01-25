@@ -7,22 +7,7 @@ export const userRouter = express.Router();
 
 userRouter.post('/', addUserController.run.bind(addUserController));
 
-userRouter.get('/', (req, res) => {
-  try {
-    getAllUserController.run.bind(getAllUserController)(req, res);
-    return res.sendStatus(200);
-  } catch (error) {
-    console.error(error);
-    return res.sendStatus(500);
-  }
-});
+userRouter.get('/', getAllUserController.run.bind(getAllUserController));
 
-userRouter.get("/search", (req, res) => {
-  try {
-    getByNameUserController.run.bind(getByNameUserController)(req, res);
-    return res.sendStatus(200);
-  } catch (error) {
-    console.error(error);
-    return res.sendStatus(500);
-  }
-});
+
+userRouter.get("/search", getByNameUserController.run.bind(getByNameUserController));
