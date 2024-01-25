@@ -48,4 +48,23 @@ export class PgsqlUserRepository implements UserRepository {
     }
   }
 
+  async getByNameUser(name: string): Promise<User | null> {
+    try {
+      const user = await UserModel.findOne({ where: { name: name } });
+      if (user) {
+        return new User(
+          user.id,
+          user.name,
+          user.last_name,
+          user.password,
+          user.email
+        );
+      }else{
+        return null;
+      }
+    } catch (error) {
+      console.error("Error in Psql", error);
+      return null;
+    }
+  }
 }

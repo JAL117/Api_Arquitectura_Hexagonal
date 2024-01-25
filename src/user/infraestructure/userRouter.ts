@@ -1,5 +1,5 @@
 import express from "express";
-import { addUserController, getAllUserController } from "./dependencies";
+import { addUserController, getAllUserController, getByNameUserController } from "./dependencies";
 
 export const userRouter = express.Router();
 
@@ -23,3 +23,12 @@ userRouter.post("/create", (req, res) => {
   }
 });
 
+userRouter.get("/search", (req, res) => {
+  try {
+    getByNameUserController.run.bind(getByNameUserController)(req, res);
+    return res.sendStatus(200);
+  } catch (error) {
+    console.error(error);
+    return res.sendStatus(500);
+  }
+});
