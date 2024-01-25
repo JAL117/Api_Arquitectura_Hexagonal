@@ -3,7 +3,7 @@ import { addMedicationController, getAllMedicationController } from "./dependenc
 
 export const medicationRouter = express.Router();
 
-medicationRouter.post("/create", (req, res) => {
+medicationRouter.post("/", (req, res) => {
   try {
     addMedicationController.run.bind(addMedicationController)(req, res);
     return res.sendStatus(200);

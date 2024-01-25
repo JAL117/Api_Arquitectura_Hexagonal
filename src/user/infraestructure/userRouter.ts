@@ -3,19 +3,13 @@ import { addUserController, getAllUserController, getByNameUserController } from
 
 export const userRouter = express.Router();
 
-userRouter.get("/", (req, res) => {
+
+
+userRouter.post('/', addUserController.run.bind(addUserController));
+
+userRouter.get('/', (req, res) => {
   try {
     getAllUserController.run.bind(getAllUserController)(req, res);
-    return res.sendStatus(200);
-  } catch (error) {
-    console.error(error);
-    return res.sendStatus(500);
-  }
-});
-
-userRouter.post("/create", (req, res) => {
-  try {
-    addUserController.run.bind(addUserController)(req, res);
     return res.sendStatus(200);
   } catch (error) {
     console.error(error);
