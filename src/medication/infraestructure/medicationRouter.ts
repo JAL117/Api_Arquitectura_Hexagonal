@@ -1,5 +1,5 @@
 import express from "express";
-import { addMedicationController, getAllMedicationController } from "./dependencies";
+import { addMedicationController, getAllMedicationController,deleteMedicationController } from "./dependencies";
 
 export const medicationRouter = express.Router();
 
@@ -7,3 +7,5 @@ medicationRouter.post("/", addMedicationController.run.bind(addMedicationControl
 
 
 medicationRouter.get("/", getAllMedicationController.run.bind(getAllMedicationController));
+
+medicationRouter.delete('/', deleteMedicationController.run.bind(deleteMedicationController));
