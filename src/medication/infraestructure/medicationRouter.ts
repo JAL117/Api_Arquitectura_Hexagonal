@@ -1,11 +1,41 @@
 import express from "express";
-import { addMedicationController, getAllMedicationController,deleteMedicationController } from "./dependencies";
+import {
+  addMedicationController,
+  getAllMedicationController,
+  deleteMedicationController
+} from "./dependencies";
 
 export const medicationRouter = express.Router();
 
-medicationRouter.post("/", addMedicationController.run.bind(addMedicationController));
+medicationRouter.post("/", (req, res) => {
+  addMedicationController.run(req, res)
+    .then(() => {
+     return null;
+    })
+    .catch(error => {
+      console.error(error);
+      res.status(500).send('Internal Server Error');
+    });
+});
 
+medicationRouter.get("/", (req, res) => {
+  getAllMedicationController.run(req, res)
+    .then(() => {
+        return null;
+    })
+    .catch(error => {
+      console.error(error);
+      res.status(500).send('Internal Server Error');
+    });
+});
 
-medicationRouter.get("/", getAllMedicationController.run.bind(getAllMedicationController));
-
-medicationRouter.delete('/', deleteMedicationController.run.bind(deleteMedicationController));
+medicationRouter.delete('/', (req, res) => {
+  deleteMedicationController.run(req, res)
+    .then(() => {
+        return null;
+    })
+    .catch(error => {
+      console.error(error);
+      res.status(500).send('Internal Server Error');
+    });
+});
