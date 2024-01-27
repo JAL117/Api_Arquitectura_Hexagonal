@@ -2,5 +2,5 @@ projectKey=ApiHexagonal
 serverUrl=http://localhost:9000
 serverVersion=10.3.0.82913
 dashboardUrl=http://localhost:9000/dashboard?id=ApiHexagonal
-ceTaskId=AY1Do3hMX830-vE5qB9i
-ceTaskUrl=http://localhost:9000/api/ce/task?id=AY1Do3hMX830-vE5qB9i
+ceTaskId=AY1IVCsAj38ARzSr5SnE
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AY1IVCsAj38ARzSr5SnE
