@@ -1,5 +1,5 @@
 import {Request, Response} from "express";
-import { AddUserUseCase } from "../../aplication/addUserUseCase";
+import { AddUserUseCase } from "../../aplication/UseCase/addUserUseCase";
 
 export class AdduserController{
     constructor(readonly addUserUsecase: AddUserUseCase){}
