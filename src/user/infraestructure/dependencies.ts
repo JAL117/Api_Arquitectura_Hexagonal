@@ -9,12 +9,17 @@ import { GetAllUserController } from "./controller/getAllUserController";
 import { GetByNameUserController } from "./controller/getByNameUserController";
 import { GetByNameUserUseCase } from "../aplication/UseCase/getByNameUserUseCase";
 
-import { HashingService } from "./helpers/hashingService";
+import { HashingHelpers } from "./helpers/hashingHelpers";
+
+import { NotificationHelpers } from "./helpers/notification-Helper";
 
 export const pgsqlUserRepository = new PgsqlUserRepository();
-export const hashingService = new HashingService();
+export const hashingHelpers = new HashingHelpers();
+export const notification = new NotificationHelpers();
 
-export const addUserUseCase = new AddUserUseCase(pgsqlUserRepository , hashingService );
+notification.inicializar()
+
+export const addUserUseCase = new AddUserUseCase(pgsqlUserRepository , hashingHelpers , notification );
 export const addUserController = new AdduserController(addUserUseCase);
 
 export const getAllUsersUseCase = new GetAllUsersUseCase(pgsqlUserRepository);

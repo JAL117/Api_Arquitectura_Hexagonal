@@ -1,7 +1,7 @@
-import { HashingRepository } from "../../aplication/Services/hashingRepository";
+import { IHashingService } from "../../aplication/Services/IhashingService";
 import bcrypt from "bcrypt";
 
-export class HashingService implements HashingRepository {
+export class HashingHelpers implements IHashingService {
   async hashPassword(password: string): Promise<string> {
     const saltRounds = 10;
     const hashedPassword = await bcrypt.hash(password, saltRounds);
